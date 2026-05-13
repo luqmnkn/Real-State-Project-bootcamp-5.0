@@ -1,5 +1,15 @@
-export const register = (req, res) => {
-  res.send('This is the register endpoint');
+import bcrypt from 'bcrypt';
+
+
+export const register = async (req, res) => {
+ const { username , email , password} = req.body
+
+
+const hashPassword = await bcrypt.hash(password, 10);
+
+console.log(hashPassword);
+
+
 }
 
 export const login = (req, res) => {
