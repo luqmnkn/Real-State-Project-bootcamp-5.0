@@ -1,5 +1,8 @@
-import { PrismaClient } from '@prisma/client';
+// src/lib/db.js
+import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient();
+// This creates a single instance so you don't exhaust 
+// your MongoDB connection limit.
+const prisma = new PrismaClient()
 
-export default prisma;
+export default prisma
