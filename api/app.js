@@ -12,7 +12,8 @@ dotenv.config();
 app.use('/api/auth', authRoute);
 
 
-app.use("/health", (req, res) => {
+
+app.get("/health", (req, res) => {
   res.send("This is a test endpoint");
 });
 
