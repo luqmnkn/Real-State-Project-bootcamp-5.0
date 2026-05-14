@@ -1,10 +1,13 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import authRoute from './routes/auth.route.js';
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+dotenv.config();
+
 
 app.use('/api/auth', authRoute);
 
