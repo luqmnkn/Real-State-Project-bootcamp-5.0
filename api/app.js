@@ -1,6 +1,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import authRoute from './routes/auth.route.js';
+import cookieParser from 'cookie-parser';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+
 
 const app = express();
 

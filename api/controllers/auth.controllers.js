@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import prisma from '../lib/prisma.js';
-
+import jwt from 'jsonwebtoken';
 export const register = async (req, res) => {
 
 
@@ -37,50 +37,45 @@ try {
 
 
 
-
-
-
-
-
-
-
-
 export const login = async (req, res) => {
-
-const { email , password } = req.body;
-//if user exists in database
-const user = await prisma.user.findUnique({
-  where : {
-    username
+try {
+  
+  const { email , password  } = req.body;
+  //if user exists in database
+  const user = await prisma.user.findUnique({
+    where : {
+      email
+    }
+  })
+  
+  if(!user){
+    return res.status(401).json({message : "invalid credentials"});
   }
-})
+  
+  
+  
+  //check if password is correct
+  
+  const isPasswordValid = await bcrypt.compare(password, user.password);
+  
+  if(!isPasswordValid){
+    return res.status(401).json({message : "invalid credentials"});
+  }
+  
+  
+  //generate token and send response
+const token = jwt.sign({ userId : user.id }, process.env.JWT_SECRET, { expiresIn : '7d' });
 
-if(!user){
-  return res.status(401).json({message : "invalid credentials"});
+  const age = 60 * 60 * 1000 * 24 * 7; // 1 week in milliseconds
+  res.cookie('token', token, {
+    httpOnly : true,
+  maxAge : age
+  })
+
+    res.status(200).json('user logged in successfully');
+} catch (error) {
+  res.status(500).json({message : error.message});
 }
-
-
-
-//check if password is correct
-
-const isPasswordValid = await bcrypt.compare(password, user.password);
-
-if(!isPasswordValid){
-  return res.status(401).json({message : "invalid credentials"});
-}
-
-
-//generate token and send response
-
-res.setcookie("token", "dummy-token", {
-  httpOnly : true,
-  secure : process.env.NODE_ENV === "production",
-  sameSite : "strict",
-  maxAge : 24 * 60 * 60 * 1000 //1 day
-})
-console.log("Login endpoint hit");
-
-  res.send('This is the login endpoint');
 
 
 }
@@ -98,6 +93,11 @@ console.log("Login endpoint hit");
 
 
 export const logout = (req, res) => {
+
+//logout 
+
+res.clearCookie('token').status(200).json({message : "User logged out successfully"});
+
 
 
 // console.log("Logout endpoint hit");
