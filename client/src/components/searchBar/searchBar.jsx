@@ -14,10 +14,14 @@ function SearchBar() {
 
     const switchType = (val) => {
 setQuery((prev) => ({...prev, type: val}));
+
+
     }
     return (
-       <div className="SearchBar">
-        <div className="type"></div>
+       <div className="searchBar">
+        <div className="type">
+
+
         {types.map((type) => (
             <button
             className={query.type === type ? "active" : ""}
@@ -27,7 +31,9 @@ setQuery((prev) => ({...prev, type: val}));
             {type}
           </button>
         ))}
-        
+        </div>
+
+
         <form action="">
             <input type="text" />
             <input type="number" />
