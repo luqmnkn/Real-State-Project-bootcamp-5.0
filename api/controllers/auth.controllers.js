@@ -96,10 +96,9 @@ export const logout = (req, res) => {
 
 //logout 
 
-res.clearCookie('token').status(200).json({message : "User logged out successfully"});
+res
+.clearCookie('token')
+.status(200)
+.json({message : "User logged out successfully"});
 
-
-
-// console.log("Logout endpoint hit");
-  res.send('This is the logout endpoint');
 }
