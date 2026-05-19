@@ -1,10 +1,11 @@
 @use "../../responsive.scss" as *;
 
 nav {
-  height: 100px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
 
   a {
     transition: all 0.4s ease;
@@ -12,6 +13,7 @@ nav {
     @include sm {
       display: none;
     }
+   
 
     &:hover {
       scale: 1.05;
@@ -22,7 +24,7 @@ nav {
     flex: 3;
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 40px;
 
     .logo {
       font-weight: bold;

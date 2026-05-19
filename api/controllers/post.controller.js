@@ -67,6 +67,25 @@ export const getPost = async (req, res) => {
   }
 };
 
+export const getSavedPosts = async (req, res) => {
+  const tokenUserId = req.userId;
+  try {
+    const savedPosts = await prisma.savedPost.findMany({
+      where: { userId: tokenUserId },
+      include: {
+        post: { include: { postDetail: true } },
+      },
+    }); 
+    res.status(200).json(savedPosts);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Failed to get saved posts" });
+  }
+};
+
+      
+
+
 export const addPost = async (req, res) => {
   const body = req.body;
   const tokenUserId = req.userId;

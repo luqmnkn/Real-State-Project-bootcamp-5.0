@@ -1,4 +1,5 @@
 import Chat from "../../components/chat/Chat";
+import Card from "../../components/card/Card";
 import List from "../../components/list/List";
 import "./profilePage.scss";
 import apiRequest from "../../lib/apiRequest";

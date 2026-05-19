@@ -2,13 +2,11 @@
 
 .homePage {
   display: flex;
-  height: 100%;
 
   .textContainer {
     flex: 3;
 
     .wrapper {
-      padding-right: 100px;
       display: flex;
       flex-direction: column;
       justify-content: center;

@@ -1,7 +1,14 @@
 .chat {
-  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 380px;
+  height: 100vh;
+  background-color: #fcf5f3;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.12);
+  z-index: 999;
   display: flex;
-  flex-direction: column;
+  padding: 20px;
 
   .messages {
     flex: 1;
@@ -91,27 +98,38 @@
         }
       }
     }
-    .bottom {
-      border-top: 2px solid #f7c14b85;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+.bottom {
+  border-top: 2px solid #f7c14b85;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
 
-      textarea{
-        flex:3;
-        height: 100%;
-        border: none;
-        padding: 20px;
-      }
+  textarea {
+    flex: 1;
+    height: 45px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    resize: none;
+    padding: 12px;
+    font-size: 14px;
+    font-family: inherit;
+  }
 
-      button{
-        flex:1;
-        background-color: #f7c14b85;
-        height: 100%;
-        border: none;
-        cursor: pointer;
-      }
+  button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f7c14b;
+    cursor: pointer;
+    font-weight: 600;
+
+    &:hover {
+      background-color: #e0ad3d;
     }
+  }
+}
   }
 }

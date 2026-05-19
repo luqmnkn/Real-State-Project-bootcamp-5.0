@@ -3,9 +3,8 @@
 .searchBar {
   .type {
 
-
     button {
-      padding: 16px 36px;
+      padding: 16px 40px;
       border: 1px solid #999;
       border-bottom: none;
       cursor: pointer;
@@ -33,7 +32,7 @@
     display: flex;
     justify-content: space-between;
     height: 64px;
-    gap: 5px;
+    gap: px;
 
     @include sm {
       flex-direction: column;
@@ -41,9 +40,9 @@
     }
 
     input {
-      border: none;
+      border: 0.5px solid #999;
       padding: 0px 10px;
-      width: 200px;
+      width: 100px;
 
       @include lg {
         padding: 0px 5px;

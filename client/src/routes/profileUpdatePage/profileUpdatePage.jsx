@@ -20,11 +20,13 @@ function ProfileUpdatePage() {
 
     try {
       const res = await apiRequest.put(`/users/${currentUser.id}`, {
+
         username,
         email,
         password,
         avatar:avatar[0]
       });
+      console.log(res.data);
       updateUser(res.data);
       navigate("/profile");
     } catch (err) {
